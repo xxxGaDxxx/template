@@ -11,11 +11,8 @@ type PropsType = {
 const Display = (props: PropsType) => {
     return (
         <div className={!!props.error || props.figure === props.value ? 'frame red' : 'frame'}>
-            <span>{!!props.error
-                ? props.error
-                : props.editMode
-                    ? 'value set'
-                    : props.figure}
+            <span>{!!props.error ? props.error : props.editMode
+                ? 'value set' : props.figure}
             </span>
         </div>
     );

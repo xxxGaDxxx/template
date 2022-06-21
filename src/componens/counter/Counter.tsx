@@ -17,7 +17,6 @@ export type PropsType = {
 
 export const Counter = (props: PropsType) => {
 
-
     return (
         <div className="App">
             <div>
