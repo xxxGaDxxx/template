@@ -1,22 +1,24 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
+import {AppRootStateType} from '../../state/store';
+import {CounterType} from '../../App';
 
-type PropsType = {
-    figure: number
-    value: number
-    error: string | null
-    editMode: boolean
-}
+const Display = () => {
 
+    let {
+        figure,
+        inputMax,
+        incorrectInput,
+        editMode,
+    } = useSelector<AppRootStateType, CounterType>(state => state.counterReducer)
 
-const Display = (props: PropsType) => {
     return (
-        <div className={!!props.error || props.figure === props.value ? 'frame red' : 'frame'}>
-            <span>{!!props.error ? props.error : props.editMode
-                ? 'value set' : props.figure}
+        <div className={!!incorrectInput || figure === inputMax ? 'frame red' : 'frame'}>
+            <span>{!!incorrectInput ? incorrectInput : editMode
+                ? 'value set' : figure}
             </span>
         </div>
     );
 };
-
 
 export default Display;

@@ -1,54 +1,61 @@
 import React from 'react';
 import Button from './Button';
 import Display from './Display';
-import {ButtonClickType} from '../../App';
-
-export type PropsType = {
-    onClickInc: () => void
-    onClickReset: () => void
-    figure: number
-    inputMax: number
-    error: string | null
-    buttonClick: ButtonClickType[]
-    inputStart: number
-    editMode: boolean
-}
+import { CounterType} from '../../App';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppRootStateType} from '../../state/store';
+import {figureDisplayAC} from '../../state/counter-reducer';
 
 
-export const Counter = (props: PropsType) => {
+export const Counter = () => {
+
+    const dispatch = useDispatch();
+
+    let {
+        figure,
+        inputStart,
+        inputMax,
+        incorrectInput,
+        editMode,
+        buttonClick
+    } = useSelector<AppRootStateType, CounterType>(state => state.counterReducer)
+
+    const onClickInc = () => {
+        if (figure < inputMax) {
+            dispatch(figureDisplayAC(figure + 1))
+        }
+    }
+
+    const onClickReset = () => {
+        dispatch(figureDisplayAC(inputStart))
+    }
 
     return (
         <div className="App">
             <div>
-                <Display
-                    figure={props.figure}
-                    value={props.inputMax}
-                    error={props.error}
-                    editMode={props.editMode}
-                />
+                <Display/>
             </div>
 
             <div className={'frame1'}>
                 {
-                    props.buttonClick.map(e => {
+                    buttonClick.map(e => {
 
                         let value = () => {
-                            return props.editMode
+                            return editMode
                                 ? true
                                 : e.id === 1
-                                    ? props.inputMax <= props.inputStart || props.inputMax === props.figure
-                                    : props.inputMax <= props.inputStart
+                                    ? inputMax <= inputStart || inputMax === figure
+                                    : inputMax <= inputStart
                         }
 
                         const colBackHandler = () => {
                             if (e.id === 1) {
-                                props.onClickInc()
+                                onClickInc()
                             }
                             if (e.id === 2) {
-                                props.onClickReset()
+                                onClickReset()
                             }
                         }
-
 
                         return (
                             <Button
@@ -56,7 +63,7 @@ export const Counter = (props: PropsType) => {
                                 id={e.id}
                                 title={e.title}
                                 colBack={colBackHandler}
-                                error={props.error}
+                                incorrectInput={incorrectInput}
                                 disabled={value()}
                             />
                         )

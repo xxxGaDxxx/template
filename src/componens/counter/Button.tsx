@@ -3,7 +3,7 @@ import React, {MouseEvent} from 'react';
 type PropsType = {
     colBack: (e: MouseEvent<HTMLButtonElement>) => void
     title: string
-    error?: string | null
+    incorrectInput?: string | null
     id?: number
     disabled?: boolean
 }
