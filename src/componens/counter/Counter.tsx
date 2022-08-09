@@ -7,7 +7,13 @@ import {AppRootStateType} from '../../state/store';
 import {figureDisplayAC} from '../../state/counter-reducer';
 
 
-export const Counter = () => {
+type CounterPropsType = {
+    set?: boolean
+    callbackSet?: () => void
+}
+
+
+export const Counter = ({set,callbackSet}:CounterPropsType) => {
 
     const dispatch = useDispatch();
 
@@ -69,6 +75,7 @@ export const Counter = () => {
                         )
                     })
                 }
+                {set &&<Button colBack={callbackSet} title={'set'}/>}
             </div>
         </div>
     );

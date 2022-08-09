@@ -6,8 +6,12 @@ import {AppRootStateType} from '../../state/store';
 import {CounterType} from '../../App';
 import {editModeAC, figureDisplayAC, incorrectInputAC, inputMaxAC, inputStartAC} from '../../state/counter-reducer';
 
+type SettingsPropsType = {
+    callbackSet?: () => void
+}
 
-export const Settings = () => {
+
+export const Settings = ({callbackSet}:SettingsPropsType) => {
 
     let {
         inputStart,
@@ -50,6 +54,8 @@ export const Settings = () => {
     }
 
     const setOn = () => {
+        //@ts-ignore
+        callbackSet()
         dispatch(figureDisplayAC(inputStart))
         dispatch(incorrectInputAC(null))
         dispatch(editModeAC(false))
@@ -58,11 +64,11 @@ export const Settings = () => {
     }
 
     const setOff = () => {
-
         dispatch(incorrectInputAC('Incorrect value!'))
     }
 
     const onClickSet = () => {
+
         return inputMax >= 0 && inputStart >= 0 && inputMax > inputStart
             ? setOn()
             : setOff()

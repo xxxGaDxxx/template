@@ -1,7 +1,7 @@
-import React, {MouseEvent} from 'react';
+import React from 'react';
 
 type PropsType = {
-    colBack: (e: MouseEvent<HTMLButtonElement>) => void
+    colBack?: () => void
     title: string
     incorrectInput?: string | null
     id?: number
