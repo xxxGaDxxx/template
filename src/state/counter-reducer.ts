@@ -1,4 +1,6 @@
 import {ButtonClickType} from '../App';
+import {Dispatch} from 'redux';
+import {AppRootStateType, AppThunk} from './store';
 
 
 export type InitialValueState = {
@@ -24,7 +26,7 @@ export let initialValueState: InitialValueState = {
 }
 
 
-export const counterReducer = (state = initialValueState, action: CounterReducerType) => {
+export const counterReducer = (state = initialValueState, action: CounterReducerType):InitialValueState => {
     switch (action.type) {
         case 'FIGURE-DISPLAY':
             return {
@@ -44,7 +46,7 @@ export const counterReducer = (state = initialValueState, action: CounterReducer
         case 'INCORRECT-INPUT':
             return {
                 ...state,
-                incorrectInput: action.eroor
+                incorrectInput: action.error
             }
         case 'EDIT-MODE':
             return {
@@ -96,10 +98,10 @@ export const inputMaxAC = (valueMax: number) => {
 
 type IncorrectInputACType = ReturnType<typeof incorrectInputAC>
 
-export const incorrectInputAC = (eroor: string | null) => {
+export const incorrectInputAC = (eror: string | null) => {
     return {
         type: 'INCORRECT-INPUT',
-        eroor,
+        error: eror,
     } as const
 }
 
@@ -118,4 +120,22 @@ export const buttonClickAC = () => {
     return {
         type: 'BUTTON-CLICK',
     } as const
+}
+
+export const  inputMaxTC = ():AppThunk=>(dispatch, getState:()=>AppRootStateType)=>{
+    const inputMax = getState().counterReducer.inputMax
+    const inputStart = getState().counterReducer.inputStart
+    localStorage.setItem('counterMax', JSON.stringify(inputMax))
+    localStorage.setItem('counterStart', JSON.stringify(inputStart))
+}
+
+export const  valueAsMaxTC = ():AppThunk=>(dispatch)=>{
+    let valueAsMax = localStorage.getItem('counterMax')
+    let valueAsStart = localStorage.getItem('counterStart')
+    console.log(valueAsMax)
+    if (valueAsMax && valueAsStart) {
+        dispatch(figureDisplayAC(JSON.parse(valueAsStart)))
+        dispatch(inputStartAC(JSON.parse(valueAsStart)))
+        dispatch(inputMaxAC(JSON.parse(valueAsMax)))
+    }
 }

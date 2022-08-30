@@ -4,7 +4,14 @@ import Button from '../counter/Button';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from '../../state/store';
 import {CounterType} from '../../App';
-import {editModeAC, figureDisplayAC, incorrectInputAC, inputMaxAC, inputStartAC} from '../../state/counter-reducer';
+import {
+    editModeAC,
+    figureDisplayAC,
+    incorrectInputAC,
+    inputMaxAC,
+    inputMaxTC,
+    inputStartAC
+} from '../../state/counter-reducer';
 
 type SettingsPropsType = {
     callbackSet?: () => void
@@ -54,13 +61,13 @@ export const Settings = ({callbackSet}:SettingsPropsType) => {
     }
 
     const setOn = () => {
-        //@ts-ignore
-        callbackSet()
+        callbackSet && callbackSet()
+
         dispatch(figureDisplayAC(inputStart))
         dispatch(incorrectInputAC(null))
         dispatch(editModeAC(false))
-        localStorage.setItem('counterMax', JSON.stringify(inputMax))
-        localStorage.setItem('counterStart', JSON.stringify(inputStart))
+
+        dispatch(inputMaxTC())
     }
 
     const setOff = () => {
