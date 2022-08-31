@@ -9,7 +9,6 @@ import {
     figureDisplayAC,
     incorrectInputAC,
     inputMaxAC,
-    inputMaxTC,
     inputStartAC
 } from '../../state/counter-reducer';
 
@@ -66,8 +65,6 @@ export const Settings = ({callbackSet}:SettingsPropsType) => {
         dispatch(figureDisplayAC(inputStart))
         dispatch(incorrectInputAC(null))
         dispatch(editModeAC(false))
-
-        dispatch(inputMaxTC())
     }
 
     const setOff = () => {

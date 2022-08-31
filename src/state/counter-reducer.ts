@@ -1,6 +1,4 @@
 import {ButtonClickType} from '../App';
-import {Dispatch} from 'redux';
-import {AppRootStateType, AppThunk} from './store';
 
 
 export type InitialValueState = {
@@ -120,22 +118,4 @@ export const buttonClickAC = () => {
     return {
         type: 'BUTTON-CLICK',
     } as const
-}
-
-export const  inputMaxTC = ():AppThunk=>(dispatch, getState:()=>AppRootStateType)=>{
-    const inputMax = getState().counterReducer.inputMax
-    const inputStart = getState().counterReducer.inputStart
-    localStorage.setItem('counterMax', JSON.stringify(inputMax))
-    localStorage.setItem('counterStart', JSON.stringify(inputStart))
-}
-
-export const  valueAsMaxTC = ():AppThunk=>(dispatch)=>{
-    let valueAsMax = localStorage.getItem('counterMax')
-    let valueAsStart = localStorage.getItem('counterStart')
-    console.log(valueAsMax)
-    if (valueAsMax && valueAsStart) {
-        dispatch(figureDisplayAC(JSON.parse(valueAsStart)))
-        dispatch(inputStartAC(JSON.parse(valueAsStart)))
-        dispatch(inputMaxAC(JSON.parse(valueAsMax)))
-    }
 }
