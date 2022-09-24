@@ -7,7 +7,6 @@ import {AppRootStateType} from './state/store';
 import {figureDisplayAC, inputMaxAC, inputStartAC} from './state/counter-reducer';
 
 
-
 export type CounterType = {
     figure: number
     inputStart: number
@@ -26,19 +25,21 @@ function App() {
 
     let dispatch = useDispatch()
 
-    let valueAsStart = useSelector<AppRootStateType,number>(state => state.counterReducer.inputStart)
-    let valueAsMax = useSelector<AppRootStateType,number>(state => state.counterReducer.inputMax)
+    let valueAsStart = useSelector<AppRootStateType, number>(state => state.counterReducer.inputStart)
+    let valueAsMax = useSelector<AppRootStateType, number>(state => state.counterReducer.inputMax)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(figureDisplayAC(valueAsStart))
         dispatch(inputStartAC(valueAsStart))
         dispatch(inputMaxAC(valueAsMax))
-    },[])
+    }, [])
 
     return (
-        <div className={'display'}>
-            <Settings/>
-            <Counter/>
+        <div>
+            <div className={'display'}>
+                <Settings/>
+                <Counter/>
+            </div>
         </div>
     );
 }

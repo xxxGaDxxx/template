@@ -7,7 +7,7 @@ import Pages from './pages/Pages';
 const MeterSelection = () => {
 
     return (
-        <div>
+        <div className={'App'}>
             <HashRouter>
                 <Header/>
                 <Pages/>

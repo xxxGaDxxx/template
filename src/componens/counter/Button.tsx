@@ -1,4 +1,6 @@
 import React from 'react';
+import s from'./Button.module.css'
+
 
 type PropsType = {
     colBack?: () => void
@@ -11,7 +13,7 @@ type PropsType = {
 const Button = (props: PropsType) => {
 
     return (
-        <button className={'button'} disabled={props.disabled}
+        <button  className={s.btn} disabled={props.disabled}
                 onClick={props.colBack}>{props.title}</button>
     );
 };

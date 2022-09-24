@@ -37,12 +37,12 @@ export const Counter = ({set,callbackSet}:CounterPropsType) => {
     }
 
     return (
-        <div className="App">
+        <div className="settings_container">
             <div>
                 <Display/>
             </div>
 
-            <div className={'frame1'}>
+            <div >
                 {
                     buttonClick.map(e => {
 

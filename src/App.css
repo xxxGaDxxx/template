@@ -1,34 +1,44 @@
 .App {
-    border: solid #61dafb;
-    border-radius: 10px;
-    height: auto;
-    margin: auto;
-    padding: 10px;
-    width: 420px;
+    height: 100vh ;
+    background-image: url("./img/fon.jpg");
+    object-fit: cover;
+
 }
 
-.display {
-    align-items: center;
-    display: flex;
-    flex-flow: wrap-reverse;
-    height: 100%;
-    justify-content: center;
-    position: absolute;
-    width: 100%;
-}
 
-.frame {
-    color: #61dafb;
-    font-size: 50px;
+.settings_container {
+    border: none;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid #61dafb;
-    border-radius: 10px;
-    height: 100px;
-    margin: 15px;
-    padding: 10px;
-    width: auto;
+    background-color: #333232;
+    width: 20%;
+    margin: 0 30px;
+    height: 250px;
+    justify-content: center;
+
+
+}
+
+.settings_container span {
+    margin: 0 10px;
+}
+
+
+.display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px;
+}
+
+.frame {
+    color: #a9ff00;
+
+    border-bottom:4px solid #a9ff00;
+    padding: 20px;
+
 }
 
 .button {
@@ -41,21 +51,11 @@
 }
 
 .red {
-    background-color: red;
+    border-bottom:4px solid #9d0416;
+    color: #ff0217;
 }
 
-.frame1 {
-    color: #61dafb;
-    font-size: 40px;
-    display: flex;
-    align-items: center;
-    border: solid #61dafb;
-    border-radius: 10px;
-    height: 100px;
-    margin: 15px;
-    padding: 10px;
-    width: auto;
-}
+
 
 
 

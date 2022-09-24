@@ -1,4 +1,5 @@
 import React, {ChangeEvent} from 'react';
+import s from './Input.module.css'
 
 type InputType = {
     title: string
@@ -8,7 +9,7 @@ type InputType = {
 
 const Input = (props: InputType) => {
     return (
-        <div>
+        <div className={s.input}>
             <span>{props.title}</span>
             <input type={'number'} value={props.value} onChange={props.onChangeInput}/>
         </div>

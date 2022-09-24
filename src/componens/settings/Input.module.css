@@ -1,0 +1,31 @@
+.input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+.input span{
+    color: #a9ff00;
+}
+.input input{
+
+
+    font: inherit;
+    color: currentColor;
+    width: 90px;
+    border: 0;
+    height: 1.1876em;
+    margin: 0;
+    display: block;
+    padding: 6px 0 7px;
+    min-width: 0;
+    background: none;
+    box-sizing: content-box;
+    animation-name: mui-auto-fill-cancel;
+    letter-spacing: inherit;
+    animation-duration: 10ms;
+    -webkit-tap-highlight-color:transparent;
+
+    border-bottom: 2px solid #a9ff00;
+    color: #a9ff00;
+}

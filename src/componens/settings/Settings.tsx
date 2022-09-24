@@ -79,8 +79,9 @@ export const Settings = ({callbackSet}:SettingsPropsType) => {
     }
 
     return (
-        <div className="App">
-            <div className={'frame1'}>
+
+        <div className={'settings_container'}>
+            <div >
                 <div>
                     <Input title="max"
                            onChangeInput={onChangeInputMax}
@@ -94,9 +95,7 @@ export const Settings = ({callbackSet}:SettingsPropsType) => {
                     />
                 </div>
             </div>
-            <div className={'frame1'}>
                 <Button colBack={onClickSet} title={'set'} disabled={!!incorrectInput}/>
-            </div>
         </div>
     );
 };

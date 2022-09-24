@@ -1,4 +1,5 @@
 import React, { useState} from 'react';
+import s from './Settings_2.module.css'
 
 import {Counter} from '../counter/Counter';
 import {Settings} from '../settings/Settings';
@@ -13,7 +14,7 @@ export const Settings_2 = () => {
     }
 
     return (
-        <div>
+        <div className={s.settings2_bloc}>
             {set
                 ? <Counter
                     set={set}

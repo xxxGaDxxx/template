@@ -1,16 +1,16 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {PATH} from './Pages';
+import s from './Header.module.css'
 
 const Header = () => {
     return (
-        <div>
-            <div>
-                <NavLink to={PATH.Counter_Settings}>Counter && Settings</NavLink>
-            </div>
-            <div>
-                <NavLink to={PATH.Settings}>Settings</NavLink>
-            </div>
+        <div className={s.header}>
+
+                <NavLink to={PATH.Counter_Settings} className={s.link}>Counter && Settings</NavLink>
+
+                <NavLink to={PATH.Settings} className={s.link}>Settings</NavLink>
+
 
         </div>
     );
