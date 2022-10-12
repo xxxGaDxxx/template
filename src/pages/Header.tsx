@@ -1,19 +1,24 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
-import {PATH} from './Pages';
-import s from './Header.module.css'
 
-const Header = () => {
-    return (
-        <div className={s.header}>
+import { NavLink } from 'react-router-dom';
 
-                <NavLink to={PATH.Counter_Settings} className={s.link}>Counter && Settings</NavLink>
+import { ReturnComponentType } from '../types';
 
-                <NavLink to={PATH.Settings} className={s.link}>Settings</NavLink>
+import s from './Header.module.css';
+import { PATH } from './Pages';
 
+const Header = (): ReturnComponentType => {
+  return (
+    <div className={s.header}>
+      <NavLink to={PATH.Counter_Settings} className={s.link}>
+        Counter && Settings
+      </NavLink>
 
-        </div>
-    );
+      <NavLink to={PATH.Settings} className={s.link}>
+        Settings
+      </NavLink>
+    </div>
+  );
 };
 
 export default Header;

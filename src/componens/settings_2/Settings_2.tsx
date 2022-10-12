@@ -1,31 +1,25 @@
-import React, { useState} from 'react';
-import s from './Settings_2.module.css'
+import React, { useState } from 'react';
 
-import {Counter} from '../counter/Counter';
-import {Settings} from '../settings/Settings';
+import { ReturnComponentType } from '../../types';
+import { Counter } from '../counter/Counter';
+import { Settings } from '../Settings_1/settings/Settings';
 
+import s from './Settings_2.module.css';
 
-export const Settings_2 = () => {
+export const Settings_2 = (): ReturnComponentType => {
+  let [set, setSet] = useState(false);
 
-    let [set,setSet]=useState(false)
+  let callbackSet = (): void => {
+    setSet(!set);
+  };
 
-    let callbackSet = ()=>{
-        setSet(!set)
-    }
-
-    return (
-        <div className={s.settings2_bloc}>
-            {set
-                ? <Counter
-                    set={set}
-                    callbackSet={callbackSet}
-                />
-            : <Settings
-                    callbackSet={callbackSet}
-                />}
-        </div>
-    )
-}
-
-
-
+  return (
+    <div className={s.settings2_bloc}>
+      {set ? (
+        <Counter set={set} callbackSet={callbackSet} />
+      ) : (
+        <Settings callbackSet={callbackSet} />
+      )}
+    </div>
+  );
+};

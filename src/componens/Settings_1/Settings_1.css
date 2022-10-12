@@ -1,6 +1,6 @@
 .App {
     height: 100vh ;
-    background-image: url("./img/fon.jpg");
+    background-image: url("../../img/fon.jpg");
     object-fit: cover;
 
 }
